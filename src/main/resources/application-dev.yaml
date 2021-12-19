@@ -1,0 +1,73 @@
+server:
+  port:8080
+
+spring:
+  dubbo:
+    application:
+      name: springboot-dubbo-demo #应用名
+    registry:
+      address: zookeeper://localhost #zookeeper地址
+      port: 2181 #提供注册的端口
+    protocol:
+      name: dubbo
+      port: 20890 #dubbo服务暴露的端口
+    scan: cn.syk.dubbo #扫描的包名
+  redis:
+    # Redis数据库索引（默认为0）
+    database: 0
+    # Redis服务器地址
+    host: 127.0.0.1
+    # Redis服务器连接端口
+    port: 6379
+    # Redis服务器连接密码（默认为空）
+    password: syk
+    # 连接超时时间（毫秒）
+    timeout: 1000
+    jedis:
+      pool:
+        # 连接池最大连接数（使用负值表示没有限制）
+        max-active: 20
+        # 连接池最大阻塞等待时间（使用负值表示没有限制）
+        max-wait: 5000ms
+        # 连接池中的最大空闲连接
+        max-idle: 10
+        # 连接池中的最小空闲连接
+        min-idle: 0
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    username: syk
+    password: syk
+    url: jdbc:mysql://localhost:3306/syk?useUnicode=true&characterEncoding=utf-8
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    initialSize: 5
+    minIdle: 5
+    maxActive: 20
+    maxWait: 60000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT1FROMDUAL
+    testWhileIdle: true
+    testOnBorrow: true
+    testOnReturn: true
+    filters: stat,wall,log4j
+    logSlowSql: true
+  application:
+    name: dev-manager
+  mvc:
+    view:
+      suffix: .jsp
+      prefix: /WEB-INF/jsp/
+
+mybatis:
+  mapper-locations: classpath:mapping/*Mapping.xml
+  type-aliases-package: cn.syk.entity
+  configuration:
+    map-underscore-to-camel-case: true
+
+
+#showSql
+Logging:
+  level:
+    cn:
+      syk:
+        mapper: debug

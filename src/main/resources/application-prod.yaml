@@ -1,0 +1,44 @@
+server:
+  port:8080
+
+spring:
+  datasource:
+    username: root
+    password: root
+    url: jdbc:mysql://localhost:3306/syk?useUnicode=true&characterEncoding=utf-8
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      initial-size: 5
+      max-active: 10
+      min-idle: 5
+      max-wait: 30000
+      pool-prepared-statements: true
+      max-pool-prepared-statement-per-connection-size:  20
+      validation-query: SELECT 1 FROM DUAL
+      validation-query-timeout: 60000
+      test-on-borrow: false
+      test-on-return: false
+      test-while-idle: true
+      time-between-eviction-runs-millis:  60000
+      min-evictable-idle-time-millis: 100000
+  mvc:
+    view:
+      prefix: /
+      suffix: .html
+  application:
+    name: dev-manager
+
+mybatis:
+  mapper-locations: classpath:mapping/*Mapping.xml
+  type-aliases-package: cn.syk.entity
+  configuration:
+    map-underscore-to-camel-case: true
+
+
+#showSql
+Logging:
+  level:
+    cn:
+      syk:
+        mapper: debug

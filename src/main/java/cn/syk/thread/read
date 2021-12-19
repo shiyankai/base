@@ -1,0 +1,18 @@
+Java多线程实现的方式有四种
+
+    1.继承Thread类，重写run方法
+    2.实现Runnable接口，重写run方法，实现Runnable接口的实现类的实例对象作为Thread构造函数的target
+    3.通过Callable和FutureTask创建线程
+    4.通过线程池创建线程
+
+    runnable实现多线程更容易实现资源共享
+多线程资源安全实现方式
+1：Atomic对象操作
+AtomicInteger a = new AtomicInteger(12);
+2：Lock lock = new ReentrantLock();
+lock.lock();
+执行资源
+lock.unlock();
+3：synchronized
+
+阿里规范不可以使用Executors创建线程池 担心线程无线创建以及队列无线等待加入导致oom问题（内存溢出）

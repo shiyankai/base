@@ -1,0 +1,5 @@
+将conf目录下的zoo_sample.cfg文件，复制一份，重命名为zoo.cfg
+修改zoo.cfg配置文件，将dataDir=/tmp/zookeeper修改成zookeeper安装目录所在的data文件夹（需要在安装目录下面新建一个空的data文件夹和log文件夹）
+添加一条添加数据日志的配置
+dataDir=zookeepr主目录\data
+dataLogDir=zookeepr主目录\log

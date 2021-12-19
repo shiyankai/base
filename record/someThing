@@ -1,0 +1,4 @@
+字符串补0
+举个例子：要8位，如果没8位就前面补0
+Integer num = 10;
+String numString = String.format("%08d", num);
