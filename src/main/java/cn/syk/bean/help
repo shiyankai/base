@@ -4,7 +4,7 @@
 
 两者的目的是一样的，都是注册bean到Spring容器中。
 
-区别：
+区别： sssmaster
 
 @Component（@Controller、@Service、@Repository）通常是通过类路径扫描来自动侦测以及自动装配到Spring容器中。
 
