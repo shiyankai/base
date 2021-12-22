@@ -21,7 +21,7 @@ public class StudentController {
 
     @RequestMapping("/getById")
     public Map show(@Param("name") String name) {
-        Map map = new HashMap<>();
+        Map map = new HashMap<String,String>();
         return map;
     }
 }

@@ -51,7 +51,7 @@ public class UserController {
     }
     @RequestMapping("/show")
     public Map show(@Param("name") String name){
-        Map map = new HashMap<>();
+        Map map = new HashMap();
         int i = 0;
         while (i++<10000){
             map.put(i,i);

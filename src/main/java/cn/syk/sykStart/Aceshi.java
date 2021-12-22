@@ -8,6 +8,8 @@ import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @Author syk
@@ -28,9 +30,14 @@ public class Aceshi {
         String text=bufferedReader.readLine();
         System.out.println("请输入文字："+text);
         FileReader fr = new FileReader(new File(""));*/
+        Map map = new HashMap();
+        String str = "zhedoushi shaa ";
+        int sad = str.hashCode() & 5;
+        System.out.println(str.hashCode());
+        System.out.println(sad);
     }
 
-//    调用摄像头拍照
+    //    调用摄像头拍照
     public static String takePictures() {
         Webcam webcam = Webcam.getDefault();
         if (webcam == null) {
