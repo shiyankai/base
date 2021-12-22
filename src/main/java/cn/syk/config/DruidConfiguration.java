@@ -1,11 +1,17 @@
-package cn.syk.check;
+package cn.syk.config;
 
+import com.alibaba.druid.pool.DruidDataSource;
 import com.alibaba.druid.support.http.StatViewServlet;
 import com.alibaba.druid.support.http.WebStatFilter;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
+
+import javax.sql.DataSource;
 
 @Configuration
 public class DruidConfiguration {
@@ -47,5 +53,20 @@ public class DruidConfiguration {
        filterRegistrationBean.addInitParameter("exclusions","*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*");
  
        return filterRegistrationBean;
+    }
+    @Bean(name= "datasource")
+    @Primary
+    @ConfigurationProperties(prefix = "spring.datasource")
+    public DataSource druidDataSource() {
+        /*DruidDataSource dataSource = new DruidDataSource();
+		dataSource.setUrl(env.getProperty("spring.datasource.url"));
+		dataSource.setUsername(env.getProperty("spring.datasource.username"));
+		dataSource.setPassword(env.getProperty("spring.datasource.password"));*/
+        return new DruidDataSource();
+    }
+    @Bean(name = "dataSource2")
+    @ConfigurationProperties(prefix = "spring.datasource2")
+    public DataSource getDataSource(){
+        return DataSourceBuilder.create().build();
     }
 }

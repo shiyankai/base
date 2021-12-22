@@ -1,0 +1,15 @@
+面试：
+幂等怎么处理
+#redis能做什么 redis基本数据类型
+String,Hash,List,Set,ZSet
+spring 做过的非业务方面的内容
+#@Transactional 什么情况下可能会失效
+1:@transactional不可以控制static和非public方法
+2：自调用，两个方法都有事务，方法一直接调用方法二，处理：新开方法加事务注解
+3:mysql数据库，必须设置数据库引擎为InnoDB。否则不支持rollback
+4：开启了新线程，因为spring实现事务的原理是通过ThreadLocal把数据库连接绑定到当前线程中，新开启一个线程获取到的连接就不是同一个了
+java中的访问修饰符有public、protected、default、private四种
+
+
+
+

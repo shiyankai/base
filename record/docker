@@ -1,0 +1,25 @@
+#在运行CentOS 6.5及以后版本时，需要内核版本>=2.6.32-431
+uname -r
+#安装工具包，缺少这些依赖将无法完成
+yum install -y yum-utils
+#：设置远程仓库
+
+#yum install docker-ce
+
+systemctl start docker
+service docker start
+chkconfig docker on
+
+docker run hello-world
+
+
+redis：
+docker pull redis
+docker run -p 6379:6379 --name myredis -v /data/redis/redis.conf:/etc/redis/redis.conf -v /data/redis/data:/data -d redis redis-server /etc/redis/redis.conf --appendonly yes
+docker exec -p -d myredis redis-clt
+
+
+docker run --name tomcat -it -d -p 8080:8080 tomcat
+#查看docker容器内部文件
+docker exec -it containerID /bin/bash
+

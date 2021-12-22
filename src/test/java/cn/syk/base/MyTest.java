@@ -2,13 +2,15 @@ package cn.syk.base;
 
 import cn.syk.bean.MyBean;
 import cn.syk.dataDeal.GetFilesFromHttp;
-import com.alibaba.druid.pool.DruidDataSource;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.jdbc.core.JdbcTemplate;
+import redis.clients.jedis.Jedis;
+import redis.clients.jedis.JedisPool;
 
 import javax.annotation.Resource;
+import javax.sql.DataSource;
 import java.sql.SQLException;
 import java.text.ParseException;
 
@@ -16,15 +18,16 @@ import java.text.ParseException;
 @SpringBootTest
 public class MyTest {
     @Autowired
-    private JdbcTemplate jdbcTemplate;
-    @Autowired
     GetFilesFromHttp getDatefromUrl;
     @Autowired
-    DruidDataSource druidDataSource;
+    DataSource dataSource;
+    @Autowired
+    JedisPool jedisPool;
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
     @Resource
     private MyBean myBean;
 
-    @Test
     public void get() throws ParseException, SQLException {
        /* RowMapper rowMap = null;
         System.out.println("2222222222222222222222222222");
@@ -54,5 +57,15 @@ public class MyTest {
 //            System.out.print(aaa.getString(4));
 //            System.out.println(aaa.getBigDecimal(5));
 //        }
+    }
+
+    @Test
+    void test(){
+        Jedis jedis = jedisPool.getResource();
+       long start = System.currentTimeMillis();
+        for (int i = 0; i < 10000; i++) {
+            jedis.set(String.valueOf(i),i+"");
+        }
+        System.out.println((float)(System.currentTimeMillis()-start));
     }
 }

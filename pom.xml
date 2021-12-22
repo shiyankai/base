@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
+        <artifactId>spring-boots-startessr-parent</artifactId>
         <version>2.5.6</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
@@ -191,6 +191,14 @@
                 <configuration>
                     <!--如果没有fork这个配置 devtools将不起作用-->
                     <fork>true</fork>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>6</source>
+                    <target>6</target>
                 </configuration>
             </plugin>
         </plugins>
