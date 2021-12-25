@@ -23,3 +23,7 @@ docker run --name tomcat -it -d -p 8080:8080 tomcat
 #查看docker容器内部文件
 docker exec -it containerID /bin/bash
 
+问题：
+1：selinux访问限制导致安装失败，系统黑屏。处理：关闭selinux的访问限制
+2：
+
