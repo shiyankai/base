@@ -73,7 +73,6 @@ mybatis:
 
 #showSql
 Logging:
-  level:
-    cn:
-      syk:
-        mapper: debug
+  config: #默认名为log4j2-spring.xml
+  level: trace
+    cn.syk.mapper: trace
