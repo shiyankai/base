@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.jdbc.core.JdbcTemplate;
-import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 
 import javax.annotation.Resource;
@@ -61,11 +60,7 @@ public class MyTest {
 
     @Test
     void test(){
-        Jedis jedis = jedisPool.getResource();
-       long start = System.currentTimeMillis();
-        for (int i = 0; i < 10000; i++) {
-            jedis.set(String.valueOf(i),i+"");
-        }
-        System.out.println((float)(System.currentTimeMillis()-start));
+        /*Jedis jedis = jedisPool.getResource();
+       jedis.setnx("asd","a");*/
     }
 }
