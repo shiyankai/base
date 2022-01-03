@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -23,12 +24,12 @@ public class UserController {
     @Value("${application.message:Hello World}")
     private String message ;
 
-    /*@RequestMapping("/{name}")
+    @RequestMapping("/{name}")//http://localhost:8080/user/zhangsan
     public String welcome(@PathVariable String name,Map<String, Object> map) {
         map.put("time", new Date());
         map.put("message", this.message);
-        return "welcome";
-    }*/
+        return "welcome"+String.valueOf(map);
+    }
 
     @RequestMapping("/index")
     public Object index(HttpServletRequest request) {
@@ -50,12 +51,12 @@ public class UserController {
         return userService.selectByPrimaryKey(id).toString();
     }
     @RequestMapping("/show")
-    public Map show(@Param("name") String name){
+    public String show(@Param("name") String name){
         Map map = new HashMap();
         int i = 0;
         while (i++<10000){
             map.put(i,i);
         }
-        return map;
+        return String.valueOf(map);
     }
 }

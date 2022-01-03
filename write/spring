@@ -1,0 +1,14 @@
+Aspect
+@Pointcut("execution(public * com.stuPayment.controller..*.*(..))")//切入点描述 这个是controller包的切入点
+public void controllerLog(){}//签名，可以理解成这个切入点的一个名称
+
+@Before("controllerLog()")
+public void logBeforeController(JoinPoint joinPoint){}
+@After("controllerLog()")
+public void logAfterController(JoinPoint joinPoint){}
+@Around("controllerLog()")
+public Object logAroundController(ProceedingJoinPoint proceedingJoinPoint){}
+@AfterReturning(value = "controllerLog()",returning = "ret")
+public String logAfterReturningController(String joinPoint){}
+@AfterThrowing(pointcut="controllerLog()",throwing="exception")
+public void logAfterThrowingController(Exception exception){}

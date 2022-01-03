@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 @Controller
 @RequestMapping("/account") //RequestMapping可对类和方法做映射
@@ -20,7 +21,7 @@ public class AccountController {
   }
   @RequestMapping("/valid")
   @ResponseBody
-  public String Valid(HttpServletRequest request) {
+  public String Valid(HttpServletRequest request, HttpServletResponse response) {
     Account account = new Account();
     account.setName(request.getParameter("name"));
     account.setPassWord(request.getParameter("password"));

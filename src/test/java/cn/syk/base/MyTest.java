@@ -2,17 +2,22 @@ package cn.syk.base;
 
 import cn.syk.bean.MyBean;
 import cn.syk.dataDeal.GetFilesFromHttp;
+import com.alibaba.dubbo.common.json.JSON;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.jdbc.core.JdbcTemplate;
-import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 
 import javax.annotation.Resource;
 import javax.sql.DataSource;
+import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 import java.text.ParseException;
+import java.util.HashMap;
+import java.util.Map;
 
 
 @SpringBootTest
@@ -60,12 +65,21 @@ public class MyTest {
     }
 
     @Test
-    void test(){
-        Jedis jedis = jedisPool.getResource();
-       long start = System.currentTimeMillis();
-        for (int i = 0; i < 10000; i++) {
-            jedis.set(String.valueOf(i),i+"");
+    void test() throws NoSuchAlgorithmException {
+        Map map = new HashMap<>();
+        JSONObject jsonObject = new JSONObject(map);
+        try {
+            jsonObject.put("name","王林");
+            jsonObject.put("age",18);
+        } catch (JSONException e) {
+            e.printStackTrace();
         }
-        System.out.println((float)(System.currentTimeMillis()-start));
+        System.out.println(jsonObject.toString());
+        try {
+            JSON.parse("{\"name\":\"王林\",\"age\":18}");
+            new JSONObject().toString();
+        } catch (com.alibaba.dubbo.common.json.ParseException e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -1,0 +1,3 @@
+JSONObject jsonObject = JSON.parse("{\"name\":\"王林\",\"age\":18}");
+String jsonString = jsonObject.toString();
+
