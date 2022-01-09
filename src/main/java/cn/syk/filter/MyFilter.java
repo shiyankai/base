@@ -13,12 +13,12 @@ import java.io.IOException;
 public class MyFilter implements Filter {
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
-        System.out.println("我的初始化："+MyFilter.class);
+        System.out.println("我的初始化：" + MyFilter.class);
     }
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-        HttpServletRequest hrequest = (HttpServletRequest)servletRequest;
+        HttpServletRequest hrequest = (HttpServletRequest) servletRequest;
         HttpServletResponseWrapper wrapper = new HttpServletResponseWrapper((HttpServletResponse) servletResponse);
         //放行字段
 //        if(hrequest.getRequestURI().indexOf("/index") != -1 ||
@@ -37,6 +37,6 @@ public class MyFilter implements Filter {
 
     @Override
     public void destroy() {
-        System.out.println("销毁MyFilter:"+MyFilter.class.getName());
+        System.out.println("销毁MyFilter:" + MyFilter.class.getName());
     }
 }

@@ -70,6 +70,7 @@ mybatis:
   configuration:
     map-underscore-to-camel-case: true
 logging:
-  config: C:\Users\Administrator\Desktop\gitHub\base\src\main\resources\logback.xml
   level:
     src: trace
+  file:
+    path:

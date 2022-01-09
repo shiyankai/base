@@ -11,6 +11,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 @Configuration
 public class BaseConfigValues {
     public AtomicInteger count = new AtomicInteger(0);
+
     public AtomicInteger getCount() {
         return count;
     }

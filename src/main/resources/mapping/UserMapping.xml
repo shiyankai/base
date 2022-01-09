@@ -8,8 +8,8 @@
         <result column="realName" property="realname" jdbcType="VARCHAR"/>
     </resultMap>
     <sql id="Base_Column_List">
-    id, userName, passWord, realName
-  </sql>
+        id, userName, passWord, realName
+    </sql>
     <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
         select
         <include refid="Base_Column_List"/>
@@ -17,15 +17,15 @@
         where id = #{id,jdbcType=INTEGER}
     </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from user
-    where id = #{id,jdbcType=INTEGER}
-  </delete>
+        delete from user
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
     <insert id="insert" parameterType="cn.syk.entity.User">
-    insert into user (id, userName, passWord, 
-      realName)
-    values (#{id,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
-      #{realname,jdbcType=VARCHAR})
-  </insert>
+        insert into user (id, userName, passWord,
+        realName)
+        values (#{id,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR},
+        #{realname,jdbcType=VARCHAR})
+    </insert>
     <insert id="insertSelective" parameterType="cn.syk.entity.User">
         insert into user
         <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -73,10 +73,10 @@
         where id = #{id,jdbcType=INTEGER}
     </update>
     <update id="updateByPrimaryKey" parameterType="cn.syk.entity.User">
-    update user
-    set userName = #{username,jdbcType=VARCHAR},
-      passWord = #{password,jdbcType=VARCHAR},
-      realName = #{realname,jdbcType=VARCHAR}
-    where id = #{id,jdbcType=INTEGER}
-  </update>
+        update user
+        set userName = #{username,jdbcType=VARCHAR},
+        passWord = #{password,jdbcType=VARCHAR},
+        realName = #{realname,jdbcType=VARCHAR}
+        where id = #{id,jdbcType=INTEGER}
+    </update>
 </mapper>

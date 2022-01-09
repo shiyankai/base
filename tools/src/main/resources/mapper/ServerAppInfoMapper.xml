@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sxctc.collection.mapper.ServerAppInfoDao">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.sxctc.collection.entity.ServerAppInfo">
+        <id column="uuid" property="uuid" />
+        <result column="id" property="id" />
+        <result column="name" property="name" />
+        <result column="remark" property="remark" />
+        <result column="roles" property="roles" />
+        <result column="owner" property="owner" />
+        <result column="keyid" property="keyid" />
+        <result column="favorite" property="favorite" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+        <result column="created_user_id" property="createdUserId" />
+        <result column="created_user_name" property="createdUserName" />
+        <result column="last_updated_user_id" property="lastUpdatedUserId" />
+        <result column="last_updated_user_name" property="lastUpdatedUserName" />
+        <result column="ident" property="ident" />
+    </resultMap>
+
+</mapper>

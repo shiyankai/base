@@ -1,0 +1,17 @@
+package com.sxctc.collection.service.serviceImpl;
+
+import com.baomidou.mybatisplus.service.impl.ServiceImpl;
+import com.sxctc.collection.entity.ServerAppInfo;
+import com.sxctc.collection.mapper.ServerAppInfoMapper;
+
+/**
+ * <p>
+ * q 服务类
+ * </p>
+ *
+ * @author shiyankai
+ * @since 2022-01-07
+ */
+public class ServerAppInfoServiceImpl extends ServiceImpl<ServerAppInfoMapper,ServerAppInfo> implements ServerAppInfoService{
+
+}

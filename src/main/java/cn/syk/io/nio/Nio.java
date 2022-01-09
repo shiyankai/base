@@ -14,6 +14,7 @@ public class Nio {
     public static void main(String[] args) throws IOException {
 
     }
+
     void a() throws IOException {
         FileInputStream fish = new FileInputStream("C:\\Users\\Administrator\\Desktop\\prop.txt");
         FileChannel channel = fish.getChannel();
@@ -22,7 +23,7 @@ public class Nio {
         System.out.println();
 
         IntBuffer buf1 = IntBuffer.allocate(10);
-        int[] arr = new int[]{1,2,5};
+        int[] arr = new int[]{1, 2, 5};
         buf1.put(arr);
         System.out.println(buf1);
         //一种复制方法
@@ -30,7 +31,7 @@ public class Nio {
         System.out.println(buf3);
         buf1.flip();
         System.out.println(buf1);
-        while(buf1.hasRemaining()){
+        while (buf1.hasRemaining()) {
             System.out.println(buf1.get());
         }
         System.out.println("可读数据为：" + buf1.remaining());

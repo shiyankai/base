@@ -8,6 +8,8 @@ import java.util.List;
 @Component
 public interface GpHangQMapper {
     int insert(GpHangQ record);
+
     int insertList(List<GpHangQ> list);
+
     int insertSelective(GpHangQ record);
 }

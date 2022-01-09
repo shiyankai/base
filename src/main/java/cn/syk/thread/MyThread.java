@@ -15,6 +15,7 @@ public class MyThread extends Thread {
             System.out.println(i);
         }
     }
+
     public static void main(String[] args) throws InterruptedException {
         BaseConfigValues baseConfigValues = new BaseConfigValues();
 //        创建一个定长线程池，可控制线程最大并发数，超出的线程会在队列中等待。
@@ -27,7 +28,7 @@ public class MyThread extends Thread {
 //        创建一个单线程化的线程池，它只会用唯一的工作线程来执行任务，保证所有任务按照指定顺序(FIFO, LIFO, 优先级)执行。
         ExecutorService executor3 = Executors.newSingleThreadExecutor();
         long start = System.currentTimeMillis();
-        for (int i = 0; i <500000 ; i++) {
+        for (int i = 0; i < 500000; i++) {
             Runnable runnable = new Runnable() {
                 @Override
                 public void run() {

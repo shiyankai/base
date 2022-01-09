@@ -20,15 +20,18 @@ import javax.servlet.http.HttpServletRequest;
 @Component
 public class WebLogAspect {
     private Logger logger = LoggerFactory.getLogger(WebLogAspect.class);
+
     @Pointcut("execution(public * cn.syk.controller..*.*(..))")
-    public void controllerLog(){}
+    public void controllerLog() {
+    }
+
     /*
-    * @Before @After 组合相当于@Arround(需要执行嵌入的切入点方法proceedingJoinPoint.proceed()并返回对象)
-    * */
+     * @Before @After 组合相当于@Arround(需要执行嵌入的切入点方法proceedingJoinPoint.proceed()并返回对象)
+     * */
     @Before("controllerLog()")
-    public void logBeforeController(JoinPoint joinPoint){
+    public void logBeforeController(JoinPoint joinPoint) {
         RequestAttributes requestAttributes = RequestContextHolder.getRequestAttributes();
-        HttpServletRequest request = ((ServletRequestAttributes)requestAttributes).getRequest();
+        HttpServletRequest request = ((ServletRequestAttributes) requestAttributes).getRequest();
         // 记录下请求内容
         /*logger.info("################URL : " + request.getRequestURL().toString());
         logger.info("################HTTP_METHOD : " + request.getMethod());
@@ -36,25 +39,29 @@ public class WebLogAspect {
         logger.info("################THE ARGS OF THE CONTROLLER : " + Arrays.toString(joinPoint.getArgs()));
         logger.info("################CLASS_METHOD : " + joinPoint.getSignature().getDeclaringTypeName() + "." + joinPoint.getSignature().getName());*/
     }
+
     @After("controllerLog()")
-    public void logAfterController(JoinPoint joinPoint){
+    public void logAfterController(JoinPoint joinPoint) {
 
     }
+
     /*Around可以替代一切*/
     @Around("controllerLog()")
     public Object logAroundController(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
         //new Thread().sleep(5000);
-        return proceedingJoinPoint.proceed()+"";//在环绕中修改切入点的返回值是可行的
+        return proceedingJoinPoint.proceed() + "";//在环绕中修改切入点的返回值是可行的
     }
+
     /*AfterReturning不能修改返回值，因为返回值在*/
-    @AfterReturning(value = "controllerLog()",returning = "joinPoint")
-    public String logAfterReturningController(String joinPoint){
+    @AfterReturning(value = "controllerLog()", returning = "joinPoint")
+    public String logAfterReturningController(String joinPoint) {
         joinPoint = joinPoint + "优惠优惠！！";
-        System.out.println("切面获取到的返回信息:"+joinPoint);
+        System.out.println("切面获取到的返回信息:" + joinPoint);
         return joinPoint;
     }
-    @AfterThrowing(pointcut="controllerLog()",throwing="exception")
-    public void logAfterThrowingController(Exception exception){
-        System.out.println("切面获取到的错误信息:"+exception.getMessage());
+
+    @AfterThrowing(pointcut = "controllerLog()", throwing = "exception")
+    public void logAfterThrowingController(Exception exception) {
+        System.out.println("切面获取到的错误信息:" + exception.getMessage());
     }
 }

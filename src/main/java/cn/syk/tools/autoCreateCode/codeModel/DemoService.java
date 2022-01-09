@@ -4,8 +4,8 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class DemoService {
-  public boolean model () {
+    public boolean model() {
 
-    return false;
-  }
+        return false;
+    }
 }

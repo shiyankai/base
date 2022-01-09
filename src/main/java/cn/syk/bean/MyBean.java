@@ -8,8 +8,8 @@ import org.springframework.stereotype.Component;
  **/
 @Component
 public class MyBean {
-    public String getBeanName(){
-        return "asdddddddddddd";
-        //return new Object() 一般使用这种方式把对象加入springioc控制
+    public Object MyBean() {
+        //return "asdddddddddddd";
+        return new Object(); //一般使用这种方式把对象加入springioc控制
     }
 }

@@ -6,5 +6,6 @@ package cn.syk.io.bio;
  **/
 public interface ISocketServer {
     String getOrder(int orderId, String name);
+
     String getOrderName(String name);
 }

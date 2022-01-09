@@ -2,9 +2,7 @@ package cn.syk.base;
 
 import cn.syk.bean.MyBean;
 import cn.syk.dataDeal.GetFilesFromHttp;
-import com.alibaba.dubbo.common.json.JSON;
-import org.json.JSONException;
-import org.json.JSONObject;
+import cn.syk.tools.requestParamaters.ReadApi;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -16,8 +14,6 @@ import javax.sql.DataSource;
 import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 import java.text.ParseException;
-import java.util.HashMap;
-import java.util.Map;
 
 
 @SpringBootTest
@@ -32,6 +28,8 @@ public class MyTest {
     private JdbcTemplate jdbcTemplate;
     @Resource
     private MyBean myBean;
+    @Autowired
+    ReadApi readApi;
 
     public void get() throws ParseException, SQLException {
        /* RowMapper rowMap = null;
@@ -66,7 +64,8 @@ public class MyTest {
 
     @Test
     void test() throws NoSuchAlgorithmException {
-        Map map = new HashMap<>();
+        readApi.read();
+        /*Map map = new HashMap<>();
         JSONObject jsonObject = new JSONObject(map);
         try {
             jsonObject.put("name","王林");
@@ -80,6 +79,6 @@ public class MyTest {
             new JSONObject().toString();
         } catch (com.alibaba.dubbo.common.json.ParseException e) {
             e.printStackTrace();
-        }
+        }*/
     }
 }

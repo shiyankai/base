@@ -9,6 +9,7 @@ public class Student implements IPeople {
     public String getName(String userId) {
         return "studentName";
     }
+
     @Override
     public String getAge(String userId) {
         System.out.println("studentAge");

@@ -22,25 +22,25 @@ import java.util.Map;
 public class UserController {
     private final Logger logger = LoggerFactory.getLogger(UserController.class);
     @Value("${application.message:Hello World}")
-    private String message ;
+    private String message;
 
     @RequestMapping("/{name}")//http://localhost:8080/user/zhangsan
-    public String welcome(@PathVariable String name,Map<String, Object> map) {
+    public String welcome(@PathVariable String name, Map<String, Object> map) {
         map.put("time", new Date());
         map.put("message", this.message);
-        return "welcome"+String.valueOf(map);
+        return "welcome" + String.valueOf(map);
     }
 
     @RequestMapping("/index")
     public Object index(HttpServletRequest request) {
         HttpSession session = request.getSession(true);
         session.setAttribute("zxc", "zxc");
-        return  "index";
+        return "index";
     }
 
     @RequestMapping("/online")
     public Object online() {
-        return  "当前在线人数：" + MyHttpSessionListener.online + "人";
+        return "当前在线人数：" + MyHttpSessionListener.online + "人";
     }
 
     @Autowired
@@ -50,12 +50,13 @@ public class UserController {
     public String GetUser(@PathVariable int id) {
         return userService.selectByPrimaryKey(id).toString();
     }
+
     @RequestMapping("/show")
-    public String show(@Param("name") String name){
+    public String show(@Param("name") String name) {
         Map map = new HashMap();
         int i = 0;
-        while (i++<10000){
-            map.put(i,i);
+        while (i++ < 10000) {
+            map.put(i, i);
         }
         return String.valueOf(map);
     }

@@ -1,0 +1,8 @@
+select pi(),
+abs(-1),
+uuid(),
+replace(uuid(),'-',''),
+sqrt(4),
+mod(3,7),
+concat('!','@','#','$'),
+concat_ws('+','@','#','$'),

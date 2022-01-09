@@ -8,9 +8,9 @@ package cn.syk.dataDeal;
 import javax.jws.WebService;
 
 @WebService
-public class DealExcel implements IDealExcel{
+public class DealExcel implements IDealExcel {
     @Override
-    public String readAndWrite(String FilePath){
+    public String readAndWrite(String FilePath) {
         return "测试使用";
     }
 }

@@ -1,9 +1,9 @@
 package cn.syk.io.bio;
- 
+
 import java.io.IOException;
 import java.net.Socket;
 import java.util.List;
- 
+
 /**
  * class
  *
@@ -11,11 +11,11 @@ import java.util.List;
  * @date 2018年12月20日
  */
 public class SocketUtil {
- 
+
     public static String getSocket(String url, int port, String packageName, List<String> argList) {
- 
+
         String reponseData = "";
- 
+
         try {
             Socket client = new Socket(url, port);
 //            获取服务端的 类 方法 和参数类型
@@ -26,11 +26,11 @@ public class SocketUtil {
             client.getOutputStream().write(className.getBytes());
             client.getOutputStream().write(method.getBytes());
 //            遍历方法的参数
-            for ( String argList1 : argList){
- 
+            for (String argList1 : argList) {
+
                 client.getOutputStream().write(argList1.getBytes());
             }
- 
+
             client.shutdownOutput();
 //            获取服务器返回来的值
             byte[] b = new byte[1];

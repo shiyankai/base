@@ -6,5 +6,6 @@ package cn.syk.demo.proxy;
  **/
 public interface IPeople {
     String getName(String userId);
+
     String getAge(String userId);
 }

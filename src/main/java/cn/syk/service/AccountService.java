@@ -5,10 +5,10 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class AccountService {
-  public boolean valid (Account account) {
-    if("admin".equals(account.getName()) && "123456".equals(account.getPassWord())) {
-      return true;
+    public boolean valid(Account account) {
+        if ("admin".equals(account.getName()) && "123456".equals(account.getPassWord())) {
+            return true;
+        }
+        return false;
     }
-    return false;
-  }
 }

@@ -8,8 +8,6 @@ import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * @Author syk
@@ -22,19 +20,13 @@ public class Aceshi {
         InputStream fis = new FileInputStream(file);
         InputStream fiss = new FileInputStream("C:\\Users\\Administrator\\Desktop\\prop.txt");
         pp.load(fiss);
-        System.out.println(pp.getProperty("name"));
-        System.out.println(pp.getProperty("age"));
-        System.out.println(pp.getProperty("like"));
         BufferedReader bufferedReader=new BufferedReader(new InputStreamReader(System.in));
         System.out.print("请输入一系列文字，可包括空格：");
         String text=bufferedReader.readLine();
         System.out.println("请输入文字："+text);
         FileReader fr = new FileReader(new File(""));*/
-        Map map = new HashMap();
-        String str = "zhedoushi shaa ";
-        int sad = str.hashCode() & 5;
-        System.out.println(str.hashCode());
-        System.out.println(sad);
+        System.out.println("sadadasd".replace("{name}", "name=asas"));
+
     }
 
     //    调用摄像头拍照

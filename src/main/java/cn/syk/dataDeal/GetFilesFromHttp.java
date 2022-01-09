@@ -27,7 +27,7 @@ public class GetFilesFromHttp {
 
     StringBuilder builder = new StringBuilder();//保存读取的数据
 
-    public  void getDatefromUrl(String str) {
+    public void getDatefromUrl(String str) {
         builder.delete(0, builder.length());
         try {
             URL url = new URL(str);
@@ -49,7 +49,7 @@ public class GetFilesFromHttp {
         }
     }
 
-     public void writeToDataBase() throws ParseException {
+    public void writeToDataBase() throws ParseException {
         if (builder.length() > 0) {
             String[] str = builder.toString().split("\n");
             String[] date = null;
@@ -58,15 +58,15 @@ public class GetFilesFromHttp {
             for (int i = 1; i < str.length; i++) {
                 date = str[i].split(",");
                 GpHangQ gpHangQ = new GpHangQ();
-                gpHangQ.setCode(date[1].substring(1,date[1].length()));
+                gpHangQ.setCode(date[1].substring(1, date[1].length()));
                 gpHangQ.setDate(formatter.parse(date[0]));
                 gpHangQ.setName(date[2]);
-                Float val = "None".equals(date[3])? (float) 0 :Float.parseFloat(date[3]);
+                Float val = "None".equals(date[3]) ? (float) 0 : Float.parseFloat(date[3]);
                 gpHangQ.setRate(val);
                 gpHangQ.setTotal(Double.parseDouble(date[4]));
                 list.add(gpHangQ);
                 //gpHangQMapper.insert(gpHangQ);
-                if(i%4000==0 || i==str.length-1){
+                if (i % 4000 == 0 || i == str.length - 1) {
                     gpHangQMapper.insertList(list);
                 }
             }
